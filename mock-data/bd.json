@@ -1,28 +1,30 @@
 {
   "alunos": [
     {
-      "id": "1",
+      "id": 1,
       "nome": "Francisca",
       "apelido": "Duro",
+      "idade": 21,
       "curso": 101,
       "anoCurricular": 2
     },
     {
-      "id": "2",
+      "id": 2,
       "nome": "Pedro",
-      "Sobrenome": "Ferreira",
+      "apelido": "Ferreira",
+      "idade": 22,
       "curso": 101,
       "anoCurricular": 2
     }
   ],
-  "Curso": [
+  "cursos": [
     {
-      "id": "101",
-      "nome do curso": "Engenharia de Computação Gráfica e Multimédia"
+      "id": 101,
+      "nomeDoCurso": "Engenharia de Computação Gráfica e Multimédia"
     },
     {
-      "id": "102",
-      "nome do curso": "Design de Ambientes"
+      "id": 102,
+      "nomeDoCurso": "Design de Ambientes"
     }
   ]
 }
