@@ -73,7 +73,6 @@ async function listarAlunos() {
   }
 }
 
-// Adicionar aluno
 formAdicionar.addEventListener('submit', async (e) => {
   e.preventDefault();
   msgAdicionar.textContent = '';
@@ -113,7 +112,6 @@ formAdicionar.addEventListener('submit', async (e) => {
   }
 });
 
-// Mostrar formulário de edição
 function editar(aluno) {
   editarSection.classList.remove('hidden');
 
@@ -127,14 +125,12 @@ function editar(aluno) {
   msgEditar.textContent = '';
 }
 
-// Cancelar edição
 document.getElementById('cancelarEditar').addEventListener('click', () => {
   editarSection.classList.add('hidden');
   formEditar.reset();
   msgEditar.textContent = '';
 });
 
-// Guardar edição
 formEditar.addEventListener('submit', async (e) => {
   e.preventDefault();
   msgEditar.textContent = '';
@@ -175,7 +171,6 @@ formEditar.addEventListener('submit', async (e) => {
   }
 });
 
-// Apagar aluno
 async function apagar(id) {
   if (!confirm('Tem certeza que deseja apagar este aluno?')) return;
 
