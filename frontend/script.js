@@ -1,5 +1,5 @@
-const API_URL = 'http://localhost:3000/alunos';
-const CURSOS_URL = 'http://localhost:3000/cursos';
+const API_URL = 'https://twt1restapi-pedrof30-1.onrender.com/alunos';
+const CURSOS_URL = 'https://twt1restapi-pedrof30-1.onrender.com/cursos';
 
 const formAdicionar = document.getElementById('formAdicionar');
 const formEditar = document.getElementById('formEditar');
