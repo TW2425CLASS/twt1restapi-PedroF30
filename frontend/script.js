@@ -28,7 +28,7 @@ function preencherSelect(idSelect, cursos) {
   select.innerHTML = '<option value="">Seleciona um curso</option>';
   cursos.forEach(curso => {
     const opt = document.createElement('option');
-    opt.value = curso.id;
+    opt.value = curso._id;
     opt.textContent = curso.nomeDoCurso;
     select.appendChild(opt);
   });
@@ -49,24 +49,25 @@ async function listarAlunos() {
     }
 
     alunos.forEach(aluno => {
-      const cursoNome = cursos.find(c => c.id === aluno.curso)?.nomeDoCurso || 'Curso desconhecido';
+  const cursoNome = cursos.find(c => String(c._id) === String(aluno.curso))?.nomeDoCurso || 'Curso desconhecido';
 
-      const card = document.createElement('div');
-      card.className = 'aluno-card';
+  const card = document.createElement('div');
+  card.className = 'aluno-card';
 
-      card.innerHTML = `
-        <div class="aluno-info">
-          <strong>${aluno.nome} ${aluno.apelido}</strong><br />
-          Idade: ${aluno.idade} | Curso: ${cursoNome} | Ano: ${aluno.anoCurricular}
-        </div>
-        <div class="aluno-actions">
-          <button onclick='editar(${JSON.stringify(aluno)})'>Editar</button>
-          <button class="eliminar" onclick='apagar("${aluno.id}")'>Eliminar</button>
-        </div>
-      `;
+  card.innerHTML = `
+    <div class="aluno-info">
+      <strong>${aluno.nome} ${aluno.apelido}</strong><br />
+      Idade: ${aluno.idade} | Curso: ${cursoNome} | Ano: ${aluno.anoCurricular}
+    </div>
+    <div class="aluno-actions">
+      <button onclick='editar(${JSON.stringify(aluno)})'>Editar</button>
+      <button class="eliminar" onclick='apagar("${aluno._id}")'>Eliminar</button>
+    </div>
+  `;
 
-      listaAlunos.appendChild(card);
-    });
+  listaAlunos.appendChild(card);
+});
+
   } catch (err) {
     console.error('Erro ao listar alunos:', err);
   }
@@ -116,7 +117,7 @@ formAdicionar.addEventListener('submit', async (e) => {
 function editar(aluno) {
   editarSection.classList.remove('hidden');
 
-  formEditar.editarId.value = aluno.id;
+  formEditar.editarId.value = aluno._id;
   formEditar.editarNome.value = aluno.nome;
   formEditar.editarApelido.value = aluno.apelido;
   formEditar.editarIdade.value = aluno.idade;
@@ -185,16 +186,6 @@ async function apagar(id) {
     listarAlunos();
   } catch (err) {
     alert('Erro ao apagar aluno.');
-  }
-}
-
-async function editarAluno(id) {
-  try {
-    const res = await fetch(`${API_URL}/${id}`);
-    const aluno = await res.json();
-    editar(aluno);
-  } catch (err) {
-    console.error('Erro ao buscar aluno para editar:', err);
   }
 }
 
